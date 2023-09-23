@@ -1,55 +1,41 @@
-﻿using System;
-using System.Reflection.Metadata;
-using System.Security.Cryptography.X509Certificates;
-
+﻿
 namespace NoviceChallenges
 {
     class Program
     {
         static void Main(string[] args)
         {
-           /* string a = "Hello World";
-            int[] b = { 1, 5, 3, 5, 7, 1 };
-              Console.WriteLine(Add(2, 4));
-              Console.WriteLine(MaxOfThree(3, 5, 1));
-              Console.WriteLine(StringLength(a));
-              Console.WriteLine(IsEven(9));
-              Console.WriteLine(StartsHello(a));
-             Console.WriteLine(ConcatenateStrings("hello", "world"));
-              Console.WriteLine(LargestInArray(b));
-              Console.WriteLine(Factorial(4));
-              Console.WriteLine(CharCount("lhellol", 'l'));
-              Console.WriteLine(ArraySum(b));
-              Console.WriteLine(IsPalindrome("billy"));
-              Console.WriteLine(ReverseString("hello"));
-              Console.WriteLine(IsPrime(16));
-              Console.WriteLine(SwapEnds(a));
-              Console.WriteLine(Fibonacci(4));
-              */
-
-
-            
-            
-
+            /* string a = "Hello World";
+             int[] b = { 1, 5, 3, 5, 7, 1 };
+               Console.WriteLine(Add(2, 4));
+               Console.WriteLine(MaxOfThree(3, 5, 1));
+               Console.WriteLine(StringLength(a));
+               Console.WriteLine(IsEven(9));
+               Console.WriteLine(StartsHello(a));
+              Console.WriteLine(ConcatenateStrings("hello", "world"));
+               Console.WriteLine(LargestInArray(b));
+               Console.WriteLine(Factorial(4));
+               Console.WriteLine(CharCount("lhellol", 'l'));
+               Console.WriteLine(ArraySum(b));
+               Console.WriteLine(IsPalindrome("billy"));
+               Console.WriteLine(ReverseString("hello"));
+               Console.WriteLine(IsPrime(16));
+               Console.WriteLine(SwapEnds(a));
+               Console.WriteLine(Fibonacci(4));
+               */
         }
-
 
         public static int Add(int a, int b)
         {
             int x = a + b;
             return x;
         }
+
         public static bool IsEven(int number)
         {
-            if (number % 2 == 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return number % 2 == 0;
         }
+
         public static int MaxOfThree(int a, int b, int c)
         {
             int max = a;
@@ -76,14 +62,9 @@ namespace NoviceChallenges
 
         public static bool StartsHello(string s)
         {
-            if (s.StartsWith("Hello"))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            // using the ToLower() function will handle inputs like "hELLo", "HELLO", "Hello" etc.
+            // By converting to lowercase prior to any pattern matching
+            return s.ToLower().StartsWith("hello");
         }
         public static string ReverseString(string s)
         {
@@ -97,7 +78,7 @@ namespace NoviceChallenges
             int fact = 1;
             while (n > 1)
             {
-                fact = fact * n;
+                fact *= n;
                 n--;
             }
             if (n == 0) return 1;
@@ -127,19 +108,21 @@ namespace NoviceChallenges
         // 9. Return the nth Fibonacci number.
         public static int Fibonacci(int n)
         {
-           int a = 0;
-           int b=1;
-           int c=0;
-           int count=0;
-           while(count<n-2){
-            count++;
-            c = a+b;
-            a=b;
-            b=c;
-           }
+            // Handle the base cases
+            if (n == 0 || n == 1) return n;
 
+            int a = 0;
+            int b = 1;
+            int c = 0;
+            int count = 0;
 
-            // TODO: Calculate the nth Fibonacci number.
+            while (count < n - 2)
+            {
+                count++;
+                c = a + b;
+                a = b;
+                b = c;
+            }
             return c;
         }
         public static int LargestInArray(int[] numbers)
@@ -161,8 +144,6 @@ namespace NoviceChallenges
             Array.Reverse(charArray);
             string a = new string(charArray);
 
-
-
             if (s == a)
             {
                 return true;
@@ -172,6 +153,7 @@ namespace NoviceChallenges
                 return false;
             }
         }
+
         public static int ArraySum(int[] numbers)
         {
             int sum = 0;
@@ -181,6 +163,7 @@ namespace NoviceChallenges
             }
             return sum;
         }
+
         public static int CharCount(string s, char c)
         {
             int count = 0;
@@ -196,13 +179,11 @@ namespace NoviceChallenges
 
         public static string ConcatenateStrings(string str1, string str2)
         {
-            string con = str1 + " " + str2;
-            return con;
+            return str1 + " " + str2;
         }
 
         public static string SwapEnds(string s)
         {
-
             if (s.Length <= 1) return s;
 
             char firstChar = s[0];
